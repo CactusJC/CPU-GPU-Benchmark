@@ -43,9 +43,10 @@ def run_cpu_benchmark(processes=None, load=50000):
   for _, duration in return_dict.values():
     total_time += duration
 
-  return round(total_time / processes, 3)
+  return processes, round(total_time / processes, 3)
 
 if __name__ == '__main__':
   print("Running CPU benchmark...")
-  avg_time = run_cpu_benchmark()
+  cores, avg_time = run_cpu_benchmark()
+  print(f"Cores detected: {cores}")
   print(f"Average CPU time: {avg_time} seconds")

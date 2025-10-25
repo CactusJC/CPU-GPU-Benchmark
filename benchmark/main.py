@@ -1,5 +1,6 @@
-import cpu_benchmark
-import gpu_benchmark
+from benchmark import cpu_benchmark, gpu_benchmark
+from benchmark.reporting import generate_report, calculate_score
+from benchmark.database import CPU_BENCHMARKS, GPU_BENCHMARKS
 import platform
 import cpuinfo
 
@@ -18,8 +19,11 @@ def main():
 
   # CPU Benchmark
   print("Running CPU benchmark...")
-  avg_cpu_time = cpu_benchmark.run_cpu_benchmark()
+  cores, avg_cpu_time = cpu_benchmark.run_cpu_benchmark()
+  print(f"  Cores detected: {cores}")
   print(f"  Average CPU time: {avg_cpu_time} seconds")
+  cpu_score = calculate_score(avg_cpu_time)
+  generate_report(cpu_score, CPU_BENCHMARKS)
   print("-" * 30)
 
   # GPU Benchmark
@@ -29,6 +33,8 @@ def main():
     print(f"  {gpu_time}")
   else:
     print(f"  GPU time: {gpu_time} seconds")
+    gpu_score = calculate_score(gpu_time)
+    generate_report(gpu_score, GPU_BENCHMARKS)
   print("-" * 30)
 
   print("Benchmark finished.")
