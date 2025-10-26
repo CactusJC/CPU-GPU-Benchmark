@@ -14,7 +14,7 @@ def generate_report(score, db):
   print("Benchmark Comparison Report:")
   print("(Note: Score is a relative value for comparison within this tool only)")
   print("-" * 40)
-  for i, entry in enumerate(db):
+  for i, entry in enumerate(db_copy):
     # Highlight the user's system in the report
     if entry["name"] == "Your System":
       print(f"-> {i+1}. {entry['name']}: {entry['score']}")

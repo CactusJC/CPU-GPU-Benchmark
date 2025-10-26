@@ -1,0 +1,22 @@
+{
+    "system_info": {
+        "os": "Linux 6.8.0",
+        "cpu": "Intel(R) Xeon(R) Processor @ 2.30GHz"
+    },
+    "benchmarks": [
+        {
+            "cpu": {
+                "cores": 4,
+                "time": 37.025,
+                "score": 2700
+            }
+        },
+        {
+            "cpu": {
+                "cores": 4,
+                "time": 36.955,
+                "score": 2705
+            }
+        }
+    ]
+}
